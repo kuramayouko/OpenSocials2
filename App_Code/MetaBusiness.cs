@@ -9,15 +9,17 @@ namespace OpenSocials.App_Code
 
 	public class MetaBusiness
 	{
-		public Facebook 
-		private readonly Token;
+		public Facebook FacebookApi { get; set; }
+		public Instagram InstagramApi { get; set; }
+
+        private readonly string Token;
 		
-		private class Facebook
+		public class Facebook
 		{
 
 		}
 
-		private class Instagram
+		public class Instagram
 		{
 
 		}

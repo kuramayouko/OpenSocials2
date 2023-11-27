@@ -18,7 +18,7 @@ namespace OpenSocials.Pages
         public List<News> NewsDB { get; set; }
 
         [BindProperty]
-        public News fbNews { get; set; }
+        public News metaNews { get; set; }
 
         public void OnGet(
         [FromQuery] int? Id,
@@ -28,13 +28,13 @@ namespace OpenSocials.Pages
             {
                 if(publish == true)
                 {
-                    Facebook fbook = new Facebook(_context);
+                    //Facebook fbook = new Facebook(_context);
 
-                    fbNews = _context.News
+                    metaNews = _context.News
                         .Include(news => news.NewsMedia)
                         .FirstOrDefault(n => n.Id == Id);
 
-                    fbook.PagePostSimple(fbNews.Text, fbNews.NewsMedia.Base64);
+                    //fbook.PagePostSimple(metaNews.Text, metaNews.NewsMedia.Base64);
 
                 }
                 

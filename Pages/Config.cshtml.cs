@@ -22,7 +22,7 @@ namespace OpenSocials.Pages
             Config = _context.Config.FirstOrDefault();
 
             // Checa se app id foi configurado primeiro
-            if (Config != null && Config.AppId != "0" && Config.AppSecret != "0")
+            if (Config != null && Config.MetaToken != "0")
             {
                 check = true;
             }
@@ -44,11 +44,9 @@ namespace OpenSocials.Pages
             if (Config != null)
             {
                 // Atualiza o conteudo appid e appsecret
-                Config.AppId = Request.Form["Config.AppId"];
-                Config.AppSecret = Request.Form["Config.AppSecret"];
-                Config.FbPageToken = Request.Form["Config.FbPageToken"];
-                Config.FbPageId = Request.Form["Config.FbPageId"];
-
+                Config.MetaToken = Request.Form["Config.MetaToken"];
+                Config.Language = Request.Form["Config.Language"];
+                
                 //Salva no bd
                 _context.Config.Update(Config);
                 _context.SaveChanges();

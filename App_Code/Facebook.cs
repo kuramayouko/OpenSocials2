@@ -32,7 +32,6 @@
     {
         public List<Comment> comments { get; set; }
     }
-
     public class Facebook
     {
         private String appId { get; set; }

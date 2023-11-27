@@ -11,14 +11,10 @@ namespace OpenSocials.App_Code
 		[Key]
         public int Id { get; set; }
 		
-		public string FbUserToken { get; set; }
-		public string FbPageToken { get; set; }
-        public string FbPageId { get; set; }
-		public string InstaUserToken { get; set; }
-		public string InstaPageToken { get; set; }
-        public string InstaPageId { get; set; }
-		public string AppId { get; set; }
-		public string AppSecret { get; set; }
+		public string Language { get; set; }
+		public string InstaPageId { get; set; }
+        public string FacePageId { get; set; }
+		public string MetaToken { get; set; }
 	}
 	
 	public class NewsMedia
