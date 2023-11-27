@@ -1,0 +1,63 @@
+﻿@page
+@model OpenSocials.Pages.EditNewsModel
+@{
+	ViewData["Title"] = "Edit News";
+}
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+
+    <title>Edição de Notícia</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@("docsearch")/css@3" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+        
+    <main class="form-signin w-100 vh-100 m-auto">
+        <div class="py-2">
+            <h3>Editar Notícia</h3>
+        </div>
+
+        <form method="post" class="row g-3 container d-flex justify-content-start">
+            <div class="col-6">
+                <label asp-for="NewsDB.Title" class="form-label"></label>
+                <input asp-for="NewsDB.Title" class="form-control" />
+                <input type="hidden" asp-for="NewsDB.Id"/>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="NewsDB.Text" class="form-label"></label>
+                <textarea asp-for="NewsDB.Text" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="col-12 d-flex justify-content-between">
+                <button type="submit" name="handler" value="Update" class="btn update">Atualizar</button>
+                <button type="submit" name="handler" value="Delete" class="btn delete">Excluir</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+
+</html>

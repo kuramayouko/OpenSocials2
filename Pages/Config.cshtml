@@ -1,0 +1,101 @@
+﻿@page
+@model OpenSocials.Pages.ConfigModel
+@{
+	ViewData["Title"] = "Config";
+}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+
+    <title>Criação de Notícia</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@("docsearch")/css@3" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	
+	<link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+    <main class="form-signin w-100 vh-100 m-auto">
+        <div class="py-2">
+            <h3>Configurações</h3>
+        </div>
+
+        <form method="post" class="row g-3 container d-flex justify-content-start">
+            <div class="col-6 col-sm-7">
+                <label asp-for="Config.AppId" class="form-label"></label>
+                <input asp-for="Config.AppId" class="form-control" />
+                <span asp-validation-for="Config.AppId"></span>
+            </div>
+
+            <div class="col-7">
+                <label asp-for="Config.AppSecret" class="form-label"></label>
+                <input asp-for="Config.AppSecret" class="form-control" />
+                <span asp-validation-for="Config.AppSecret"></span>
+            </div>
+
+            <div class="col-7">
+                <label asp-for="Config.FbPageToken" class="form-label">Token Pagina Facebook</label>
+                <input asp-for="Config.FbPageToken" class="form-control" />
+            </div>
+
+
+            <div class="col-7">
+                <label asp-for="Config.FbPageId" class="form-label">Id da Pagina</label>
+                <input asp-for="Config.FbPageId" class="form-control" />
+            </div>
+
+            @if (false)
+            {
+            <div class="col-7">
+                <label asp-for="Config.FbPageId" class="form-label"></label>
+                <input asp-for="Config.FbPageId" class="form-control" />
+            </div>
+
+            <div class="col-3">
+                <label class="form-label"></label>
+                <a asp-page="FacebookAuth" target="_blank" class="btn form-control button-facebook">
+                    <i class="bi bi-facebook"></i> Conectar
+                </a>
+            </div>
+
+            <div class="col-7">
+                <label asp-for="Config.InstaPageId" class="form-label"></label>
+                <input asp-for="Config.InstaPageId" class="form-control" />
+            </div>
+
+            <div class="col-3 justify-content-end">
+                <label class="form-label"></label>
+                <a asp-page="InstagramAuth" target="_blank" class="btn form-control button-instagram">
+                    <i class="bi bi-instagram"></i> Conectar
+                </a>
+            </div>
+            }
+
+            <div class="col-12">
+                <button type="submit" class="btn submit">Salvar</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+
+</html>

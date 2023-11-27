@@ -1,0 +1,101 @@
+﻿@page
+@model OpenSocials.Pages.CreateNewsModel
+@{
+	ViewData["Title"] = "Create News";
+}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@("docsearch")/css@3" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	
+	<link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+			crossorigin="anonymous"></script>
+
+	@section Scripts {
+	<script>
+		function convertToBase64() {
+			var fileInput = document.getElementById('fileInput');
+			var base64HiddenInput = document.getElementById('NewsMediaBD_Base64');
+			var mediaTypeInput = document.getElementById('NewsMediaBD_MediaType');
+
+			var file = fileInput.files[0];
+
+			if (file) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					base64HiddenInput.value = e.target.result; // Seta o valor do hiden input
+				};
+
+				if (file.type.startsWith('image') || file.type.startsWith('video')) {
+					reader.readAsDataURL(file);
+					mediaTypeInput.value = file.type; // Seta o media type e o hidden input
+				} else {
+					base64HiddenInput.value = "0"; // Seta o valor pra ZERO verifica se tem anexo .cs
+					mediaTypeInput.value = "0";
+				}
+			} else {
+				base64HiddenInput.value = "0";
+				mediaTypeInput.value = "0";
+			}
+		}
+	</script>
+	}
+
+	<main class="form-signin w-100 vh-100 m-auto">
+		<div class="py-2">
+			<h3>Cadastrar Noticias</h3>
+		</div>
+
+		<form method="post" class="row g-3 container d-flex justify-content-start" enctype="multipart/form-data">
+			<div class="col-6">
+				<label asp-for="NewsBD.Title" class="form-label"></label>
+				<input asp-for="NewsBD.Title" class="form-control" />
+				<span asp-validation-for="NewsBD.Title"></span>
+			</div>
+
+			<div class="col-12">
+				<label asp-for="NewsBD.Text" class="form-label"></label>
+				<textarea asp-for="NewsBD.Text" class="form-control" rows="3"></textarea>
+				<span asp-validation-for="NewsBD.Text"></span>
+			</div>
+
+			<!--Midias anexadas precisa gravar na outra tabela primeiro a fazer-->
+
+			<div class="col-md-6">
+				<input type="hidden" asp-for="NewsMediaBD.Base64" id="NewsMediaBD_Base64" />
+				<input type="hidden" asp-for="NewsMediaBD.Type" id="NewsMediaBD_MediaType" />
+				<input type="file" id="fileInput" accept="image/*, video/*" onchange="convertToBase64()" />
+			</div>
+
+
+
+			<div class="col-12">
+				<button type="submit" class="btn submit">Cadastrar</button>
+			</div>
+		</form>
+
+	</main>
+
+</body>
+
+</html>

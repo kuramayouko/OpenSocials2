@@ -1,0 +1,66 @@
+﻿    @page
+@model OpenSocials.Pages.ViewNewsModel
+@{
+	ViewData["Title"] = "View News";
+}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/" />
+
+	<link rel="stylesheet" href="~/css/site.css" />
+	
+	<link rel="stylesheet" href="@Html.Raw("https://cdn.jsdelivr.net/npm/@docsearch/css@3")" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+   
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <main class="form-signin w-100 vh-100 m-auto">
+        <div class="py-2">
+            <h3>@Model.NewsDB.Title</h3>
+            <label for="">@Model.dateTranform(@Model.NewsDB.Date_Created)</label>
+        </div>
+
+        <div class="container">
+            <div class="col">
+                @if (Model.NewsDB.NewsMedia != null)
+                {
+                    if (Model.NewsDB.NewsMedia.Type.IndexOf("image", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        <img src="@Model.NewsDB.NewsMedia.Base64" class="bd-placeholder-img card-img-top"
+                            style="width: 100%; height: auto; max-height: 512px;" alt="@Model.NewsDB.Title">
+                    }
+                    else if (Model.NewsDB.NewsMedia.Type.IndexOf("video", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        <video width="100%" height="512" controls>
+                        <source src="@Model.NewsDB.NewsMedia.Base64" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    }
+                }
+            </div>
+            <div class="col">
+                @Model.NewsDB.Text
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
