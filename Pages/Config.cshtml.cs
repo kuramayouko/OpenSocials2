@@ -9,9 +9,10 @@ namespace OpenSocials.Pages
         private readonly DataContext _context;
 
         [BindProperty]
-        public Config Config { get; set; }
+        public Config ConfigDB { get; set; }
 
         public bool check;
+        Crypto secret = new Crypto();
 
         public ConfigModel(DataContext context)
         {
@@ -19,10 +20,16 @@ namespace OpenSocials.Pages
         }
         public void OnGet()
         {
-            Config = _context.Config.FirstOrDefault();
+            ConfigDB = _context.Config.FirstOrDefault();
 
+            if(ConfigDB.UserToken != "0" && ConfigDB.PageToken != "0")
+            {
+                ConfigDB.UserToken = secret.Decrypt(ConfigDB.UserToken);
+                ConfigDB.PageToken = secret.Decrypt(ConfigDB.PageToken);
+            }
+            
             // Checa se app id foi configurado primeiro
-            if (Config != null && Config.MetaToken != "0")
+            if (ConfigDB != null && ConfigDB.UserToken != "0")
             {
                 check = true;
             }
@@ -39,16 +46,17 @@ namespace OpenSocials.Pages
                 Page();
             }
 
-            Config = _context.Config.FirstOrDefault();
+            ConfigDB = _context.Config.FirstOrDefault();
 
-            if (Config != null)
+            if (ConfigDB != null)
             {
                 // Atualiza o conteudo appid e appsecret
-                Config.MetaToken = Request.Form["Config.MetaToken"];
-                Config.Language = Request.Form["Config.Language"];
+
+                ConfigDB.UserToken = secret.Encrypt(Request.Form["ConfigDB.UserToken"]);
+                ConfigDB.PageToken = secret.Encrypt(Request.Form["ConfigDB.PageToken"]);
                 
                 //Salva no bd
-                _context.Config.Update(Config);
+                _context.Config.Update(ConfigDB);
                 _context.SaveChanges();
             }
 

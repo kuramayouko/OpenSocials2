@@ -29,15 +29,15 @@
 
         <form method="post" class="row g-3 container d-flex justify-content-start">
             <div class="col-6 col-sm-7">
-                <label asp-for="Config.Language" class="form-label"></label>
-                <input asp-for="Config.Language" class="form-control" />
-                <span asp-validation-for="Config.Language"></span>
+                <label asp-for="ConfigDB.UserToken" class="form-label"></label>
+                <input asp-for="ConfigDB.UserToken" class="form-control" />
+                <span asp-validation-for="ConfigDB.UserToken"></span>
             </div>
 
             <div class="col-7">
-                <label asp-for="Config.MetaToken" class="form-label"></label>
-                <input asp-for="Config.MetaToken" class="form-control" />
-                <span asp-validation-for="Config.MetaToken"></span>
+                <label asp-for="ConfigDB.PageToken" class="form-label"></label>
+                <input asp-for="ConfigDB.PageToken" class="form-control" />
+                <span asp-validation-for="ConfigDB.PageToken"></span>
             </div>
 
 			//Quando connectado API aperecer logos

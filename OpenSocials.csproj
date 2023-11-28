@@ -10,16 +10,18 @@
   <ItemGroup>
     <Compile Remove="App_Code\Facebook.cs" />
     <Compile Remove="App_Code\Instagram.cs" />
+    <Compile Remove="App_Code\MetaBusiness.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
+    <Folder Include="App_Data" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="App_Code\Facebook.cs" />
     <None Include="App_Code\Instagram.cs" />
+    <None Include="App_Code\MetaBusiness.cs" />
   </ItemGroup>
 
   <ItemGroup>
