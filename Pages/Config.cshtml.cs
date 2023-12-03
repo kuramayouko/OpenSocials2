@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OpenSocials.App_Code;
 
+
 namespace OpenSocials.Pages
 {
+    [Authorize(Roles = "Admin")]
     public class ConfigModel : PageModel
     {
         private readonly DataContext _context;
